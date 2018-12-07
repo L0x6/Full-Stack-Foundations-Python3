@@ -1,0 +1,40 @@
+<html>
+<head>
+<link rel=stylesheet type=text/css href="{{url_for('static',filename='style.css')}}" >
+</head>
+<body>
+<div class = 'pane'>
+
+<div class = 'header'>
+<h1>{{restaurant.name}} Restaurant</h1>
+<h3>Editing {{editItem.name}} Menu</h3>
+</div>
+<div>
+
+<form method='POST' enctype='multipart/form-data' action=' {{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id= editItem.id ) }}'>
+<p>Edit Menu Name:</p>
+<input type='text' name='name' placeholder= ' {{editItem.name}}'  >
+<p>Edit Menu Course:</p>
+    <input type="radio" name="course" value='Appetizer' required >Appetizer</input><br/>
+
+    <input type="radio" name="course" value = 'Entree'>Entree</input><br/>
+
+    <input type="radio" name="course" value = 'Dessert'>Dessert</input><br/>
+    
+    <input type="radio" name="course" value = 'Beverage'>Beverage</input>
+
+<p>Edit Menu Description:</p>
+<textarea type='text' name='description' >{{editItem.description}} </textarea> 
+<p>Edit Menu Price:</p>
+<input type='text' name='price' placeholder= ' {{editItem.price}}' >  
+
+<p><input type='submit' value='edit Menu'></p>
+<p> <a href='{{ url_for('restaurantMenu',restaurant_id= restaurant.id) }}'>CANCEL</a> </p>
+</form>
+
+</div>
+
+</div>
+</body>
+
+</html>
